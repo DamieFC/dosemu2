@@ -122,6 +122,15 @@ install:
 	$(INSTALL) -m 0644 -D $(SRCPATH)/bindist/c/* -t $(sysdir)/c
 	$(INSTALL) -m 0644 -D $(SRCPATH)/bindist/bat/*.bat -t $(sysdir)/dosemu
 	$(INSTALL) -m 0644 -D $(SRCPATH)/bindist/bat/dosrc.d/* -t $(sysdir)/dosemu/dosrc.d
+	if [ -n "$(contribdir)" -a -d "$(contribdir)"/bat ]; then \
+	  $(INSTALL) -m 0644 -D $(contribdir)/bat/*.bat -t $(sysdir)/dosemu; \
+	fi
+	if [ -n "$(contribdir)" -a -d "$(contribdir)"/bat/dosrc.d ]; then \
+	  $(INSTALL) -m 0644 -D $(contribdir)/bat/dosrc.d/* -t $(sysdir)/dosemu/dosrc.d; \
+	fi
+	if [ -n "$(contribdir)" -a -n "`ls $(contribdir)/dosemu-*`" ]; then \
+	  $(INSTALL) -m 0755 -D $(contribdir)/dosemu-* -t $(libexecdir)/dosemu; \
+	fi
 	$(INSTALL) -d $(cmddir)
 	for i in `find -L $(SYS) -xtype f`; do \
 	  $(INSTALL) -m 0644 $$i $(cmddir); \

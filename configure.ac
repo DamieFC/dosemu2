@@ -128,12 +128,16 @@ AC_ARG_WITH(x11fontdir, [AS_HELP_STRING([--with-x11fontdir=dir],
 AC_ARG_WITH(fdtarball, [AS_HELP_STRING([--with-fdtarball=file],
   [path to FreeDOS tarball])],
   fdtarball="$withval")
+AC_ARG_WITH(contribdir, [AS_HELP_STRING([--with-contribdir=dir],
+  [directory with a contrib add-ons])],
+  contribdir="$withval")
 
 AC_SUBST(confdir)
 AC_SUBST(plugindir)
 AC_SUBST(x11fontdir)
 AC_SUBST(syshdimagedir)
 AC_SUBST(fdtarball)
+AC_SUBST(contribdir)
 
 AC_DEFINE_DIR([SYSCONFDIR], [sysconfdir], [ System config dir ])
 AC_DEFINE_DIR([CONFSUBDIR], [confdir], [ dosemu-specific config subdir ])
